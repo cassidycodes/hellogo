@@ -1,6 +1,6 @@
 # GoBridge Workshop
 
-Notes and code from a GoBridge workshop.
+Notes and code from a GoBridge workshop: https://idiomat.gitbook.io/gobridge/
 
 ## Notes
 
@@ -15,8 +15,24 @@ Notes and code from a GoBridge workshop.
 * Variables declared outside of the function body are global.
 * `package` at the beginning of a file is used to say that different files are in the same scope.
 * Uppercased identifiers like `Name` are exported (aka visible outside of the package when the package is imported). Lowercase are not.
+* when using slice's `append`, you need to assign the result to a variable. Otherwise the original variable still points to the old data.
+
+## `GOPATH`
+
+I got confused about GOPATH while working on this. If you compare the direcotry structure here to how the [workshop](https://idiomat.gitbook.io/gobridge/your-first-go-program#action-steps-2) says to set up the code, you'll notice I did a few things different.
+
+`$GOPATH` is meant to contain sources that have Go code in them. If you are trying to import a library, like I did in [gettingStarted/main.go](gettingStarted/main.go), you need to set the `GOPATH` to the current directory.
+
+You can do this with ``export GOPATH=`pwd``. Since I set this code up with multiple directories, I made a bash function in my bash profile so I could quickly change my `GOPATH`.
+
+```bash
+function setgopath() {
+ export GOPATH=`pwd` && echo "GOPATH is set to $GOPATH"
+}
+```
 
 ## Resources
+
 * https://godoc.org
 * https://play.golang.org/
-* https://idiomat.gitbook.io/gobridge/
+* https://gobyexample.com/
